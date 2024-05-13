@@ -22,7 +22,7 @@ interface KakaoLatLng {
 export default function Map() {
   // let lineRef = useRef<any>(null);
   // let dotsRef = useRef<any>([]);
-  const [{ drawFlag }, setDrawLine] = useRecoilState(DrawLineRecoil);
+  const [{ drawFlag, paths }, setDrawLine] = useRecoilState(DrawLineRecoil);
   //const { centerLat, centerLng } = useRecoilValue(MapRecoil);
   //const resetMapRecoil = useResetRecoilState(MapRecoil);
   const kakaoRef = useRef<any>();
@@ -50,8 +50,6 @@ export default function Map() {
           )
         );
       });
-      const mapDom = map.a as Document; // 이벤트 다루기위함
-
       // changeMapCenterRef.current = (lat: number, lng: number) =>
       //   map.setCenter(new KakaoMaps.LatLng(lat, lng));
 
@@ -61,17 +59,6 @@ export default function Map() {
       //   });
       //   marker.setMap(map);
       // };
-
-      const mapImg = mapDom.querySelectorAll('img');
-      mapImg.forEach((img) => {
-        img.classList.add('grayscale');
-      });
-      KakaoMaps.event.addListener(map, 'bounds_changed', () => {
-        const mapImg = mapDom.querySelectorAll('img');
-        mapImg.forEach((img) => {
-          img.classList.add('grayscale');
-        });
-      });
     });
   }, []);
 
