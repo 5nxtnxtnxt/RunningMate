@@ -31,8 +31,8 @@ export default function MapMenu() {
 
   const handlePencil = () => {
     // 경로 그리기
-    setDrawLine((prev) => ({ ...prev, drawFlag: !drawFlagRef.current }));
-    drawFlagRef.current! = !drawFlagRef.current;
+    setDrawLine((prev) => ({ ...prev, drawFlag: !drawFlag }));
+    alert(`button ${JSON.stringify(drawFlag)}`);
   };
 
   const handelRefresh = () => {
