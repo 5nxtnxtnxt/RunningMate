@@ -36,10 +36,16 @@ const data: {
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch('http://34.64.205.25/auth/valid/user/5nxtnxtnxt', {
+    method: 'GET',
+  });
+  const datas = await res.json();
+  console.log(datas);
   return (
     <>
       <HeadBar />
+      <h1>{JSON.stringify(datas)}</h1>
       <main className="mainPart flex flex-col items-center justify-between">
         {data.map((d, index) => {
           return (
