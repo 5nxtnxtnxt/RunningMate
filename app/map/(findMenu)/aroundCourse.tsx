@@ -52,7 +52,8 @@ export default function AroundCourse({
   useEffect(() => {
     if (!mapRef.current) return;
     const myMap = mapRef.current;
-
+    myMap.data.polyLine.setOptions({ strokeOpacity: 0 });
+    myMap.data.dotMarkers.forEach((m) => m.setVisible(false));
     setCenter(myMap.map.getCenter());
     //idle은 화면 이동이나 축소확대시, 움직이는 동안은 x
     const event = () => {

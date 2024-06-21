@@ -24,7 +24,6 @@ export default function Map({ mapRef, setMapIsLoading }: MapProps) {
     const kakaoMap = window.kakao.maps;
     kakaoMap.load(function () {
       let now = new kakaoMap.LatLng(33.450701, 126.570667);
-      console.log(now, 'now');
       const container = document.getElementById('map');
       const mapOptions = {
         center: now,
@@ -47,6 +46,7 @@ export default function Map({ mapRef, setMapIsLoading }: MapProps) {
         maps: kakaoMap,
         map: map,
         data: { drawMode: false, dots: [], dotMarkers: [], polyLine: {} },
+        setVisible: (bool: boolean) => {},
       };
 
       if (mapRef) {
@@ -81,7 +81,12 @@ export default function Map({ mapRef, setMapIsLoading }: MapProps) {
         dotMarkers.push(marker);
         polyline.setPath(dots);
       };
-
+      myMap.setVisible = (bool: boolean) => {
+        polyline.setOption({ strokeOpacity: bool ? 0.8 : 0 });
+        dotMarkers.forEach((marker) => {
+          marker.setVisible(bool);
+        });
+      };
       kakaoMap.event.addListener(map, 'click', ({ latLng }: clickEvent) => {
         if (myMap.data.drawMode) addMarker(latLng);
       });

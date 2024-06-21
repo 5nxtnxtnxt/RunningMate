@@ -50,6 +50,15 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        diff0: {
+          DEFAULT: '#00BF4B',
+        },
+        diff1: {
+          DEFAULT: '#FFDB1D',
+        },
+        diff2: {
+          DEFAULT: '#FF4848',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
