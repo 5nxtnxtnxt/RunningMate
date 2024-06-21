@@ -29,15 +29,7 @@ async function getCourses(latLng: LatLng) {
   return await res.json();
 }
 
-const STROKE_COLOR = [
-  '#FF0000',
-  '#FFA500',
-  '#FFFF00',
-  '#008000',
-  '#0000FF',
-  '#00008B',
-  '#800080',
-];
+const STROKE_COLOR = ['#00BF4B', '#FFDB1D', '#FF4848'];
 
 export default function AroundCourse({
   mapRef,
@@ -103,9 +95,9 @@ export default function AroundCourse({
       return new myMap.maps.Polyline({
         map: myMap.map,
         path: path,
-        strokeWeight: 15,
-        strokeColor: STROKE_COLOR[index % STROKE_COLOR.length],
-        strokeOpacity: 0.5,
+        strokeWeight: 10,
+        strokeColor: STROKE_COLOR[courses[index].difficulty],
+        strokeOpacity: 0.8,
         strokeStyle: 'solid',
       });
     });
@@ -121,7 +113,6 @@ export default function AroundCourse({
       courses[index].course.reduce((a, b) => a + b.Ma, 0) /
       courses[index].course.length;
     const coord = new myMap.maps.LatLng(lat, lng);
-    console.log(myMap.map.setCenter(coord));
   };
   return (
     <div className="">

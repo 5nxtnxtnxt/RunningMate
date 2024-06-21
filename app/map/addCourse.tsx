@@ -15,7 +15,6 @@ import {
 } from '@components/ui/form';
 import { Input } from '@components/ui/input';
 import { fetchWithRetry } from '@utils/fetch';
-import { cn } from '@/lib/utils';
 import { LatLng, MyMap } from './page';
 
 const CourseFormSchema = z.object({
